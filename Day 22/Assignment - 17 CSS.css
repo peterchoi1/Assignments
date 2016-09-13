@@ -1,0 +1,62 @@
+body {
+     background: url('http://cdn.pcwallart.com/images/godzilla-wallpaper-2.jpg');
+     background-size: cover;
+     background-repeat:no-repeat;
+	 background-attachment: fixed;
+	 opacity: 0.9;
+
+}
+
+div {
+	width: 49%;
+	display:inline-block;
+	text-align: center;
+	border: 3px solid red;
+}
+
+h1 {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}
+
+h4 {
+	text-align: left;
+}
+
+ul {
+	 list-style-type: circle;
+	 text-align: left;
+	 font-weight: bold;
+	 color: blue;
+	
+}
+
+table, th, tr, td {
+	border: 1px solid black;
+	text-align: center;
+}
+
+td:nth-child(1) {
+	font-weight: bold;
+}
+
+td:nth-child(3) {
+	color: red;
+}
+
+td:nth-child(4) {
+	font-style: italic;
+}
+
+footer {
+	text-align: center;
+	background: black;
+	color: silver;
+}
+
+table {
+	width:100%; 
+}

@@ -148,13 +148,22 @@ public class Mainline {
         int reqSatScore = 0;
         String majorDescription = "";
 
+        int major_id = 0;
+        int class_id = 0;
+
         connect();
         try {
 
             stmt = myConnection.createStatement();
+            Statement stmt2 = myConnection.createStatement();
+            Statement stmt3 = myConnection.createStatement();
 
             myResultSet = stmt.executeQuery(
                     "select student.sat,major.req_sat,major.description from student join major on student.major_id = major.id where first_name = '"
+                            + firstName + "' and last_name = '" + lastName + "';");
+
+            ResultSet myResultSet2 = stmt2.executeQuery(
+                    "select * from student join student_class_relationship on student.id = student_class_relationship.student_id where first_name = '"
                             + firstName + "' and last_name = '" + lastName + "';");
 
             while (myResultSet.next()) {
@@ -163,6 +172,34 @@ public class Mainline {
                 majorDescription = myResultSet.getString("description");
             }
 
+            System.out.println("Education System - Enrollment Process");
+            System.out.println("=====================================");
+            System.out.println();
+            System.out.println("Enrolled " + firstName + " " + lastName + " as a new student.");
+            System.out.println("Assigned " + firstName + " " + lastName + " to " + majorDescription
+                    + " which requires a required SAT score of " + reqSatScore);
+            System.out.println("Enrolled " + firstName + " " + lastName + " in the following four classes:");
+
+            while (myResultSet2.next()) {
+                major_id = myResultSet2.getInt("major_id");
+                class_id = myResultSet2.getInt("class_id");
+
+                ResultSet myResultSet3 = stmt3.executeQuery("select * from major_class_relationship where major_id = '"
+                        + major_id + "' and class_id = '" + class_id + "';");
+
+                if (myResultSet3.next()) {
+                    System.out.println(class_id + " required for major");
+
+                } else {
+                    System.out.println(class_id + " elective (not required for major)");
+                }
+
+            }
+
+            System.out.println();
+            System.out.println("_____________________________________");
+            System.out.println();
+            
         } catch (Exception exc) {
             exc.printStackTrace();
         } finally {
@@ -174,53 +211,49 @@ public class Mainline {
                 myResultSet.close();
         }
 
-        System.out.println("Education System - Enrollment Process");
-        System.out.println("=====================================");
-        System.out.println();
-        System.out.println("Enrolled " + firstName + " " + lastName + " as a new student.");
-        System.out.println("Assigned " + firstName + " " + lastName + " to " + majorDescription + " which requires a required SAT score of " + reqSatScore);
-        System.out.println("Enrolled " + firstName + " " + lastName + " in the following four classes:");
-
     }
 
     public static void main(String[] args) throws SQLException {
         // TODO Auto-generated method stub
         // Mainline.insertStudent("Adam", "Zapel", 1200, 3.0);
         // Mainline.updateMajor("Adam", "Zapel", "Finance");
-//         Mainline.addClasses("Adam", "Zapel", 10101);
-//         Mainline.addClasses("Adam", "Zapel", 10102);
-//         Mainline.addClasses("Adam", "Zapel", 20403);
-//         Mainline.addClasses("Adam", "Zapel", 20404);
+        // Mainline.addClasses("Adam", "Zapel", 10101);
+        // Mainline.addClasses("Adam", "Zapel", 10102);
+        // Mainline.addClasses("Adam", "Zapel", 20403);
+        // Mainline.addClasses("Adam", "Zapel", 20404);
         Mainline.displayStudent("Adam", "Zapel");
 
-        // Mainline.insertStudent("Graham", "Krakir", 500, 2.5);
-        // Mainline.updateMajor("Graham", "Krakir", "General Studies");
-        // Mainline.addClasses("Graham", "Krakir", 10101);
-        // Mainline.addClasses("Graham", "Krakir", 10102);
-        // Mainline.addClasses("Graham", "Krakir", 20403);
-        // Mainline.addClasses("Graham", "Krakir", 20404);
-        //
-        // Mainline.insertStudent("Ella", "Vader", 800, 3.0);
-        // Mainline.updateMajor("Ella", "Vader", "Accounting");
-        // Mainline.addClasses("Ella", "Vader", 10101);
-        // Mainline.addClasses("Ella", "Vader", 10102);
-        // Mainline.addClasses("Ella", "Vader", 20403);
-        // Mainline.addClasses("Ella", "Vader", 20404);
-        //
-        // Mainline.insertStudent("Stanley", "Kupp", 1350, 3.3);
-        // Mainline.updateMajor("Stanley", "Kupp", "Engineering");
-        // Mainline.addClasses("Stanley", "Kupp", 10101);
-        // Mainline.addClasses("Stanley", "Kupp", 10102);
-        // Mainline.addClasses("Stanley", "Kupp", 20403);
-        // Mainline.addClasses("Stanley", "Kupp", 20404);
-        //
-        // Mainline.insertStudent("Lou", "Zar", 950, 3.0);
-        // Mainline.updateMajor("Lou", "Zar", "Education");
-        // Mainline.addClasses("Lou", "Zar", 10101);
-        // Mainline.addClasses("Lou", "Zar", 10102);
-        // Mainline.addClasses("Lou", "Zar", 20403);
-        // Mainline.addClasses("Lou", "Zar", 20404);
+//        Mainline.insertStudent("Graham", "Krakir", 500, 2.5);
+//        Mainline.updateMajor("Graham", "Krakir", "General Studies");
+//        Mainline.addClasses("Graham", "Krakir", 10101);
+//        Mainline.addClasses("Graham", "Krakir", 10102);
+//        Mainline.addClasses("Graham", "Krakir", 20403);
+//        Mainline.addClasses("Graham", "Krakir", 20404);
+        Mainline.displayStudent("Graham", "Krakir");
 
+//        Mainline.insertStudent("Ella", "Vader", 800, 3.0);
+//        Mainline.updateMajor("Ella", "Vader", "Accounting");
+//        Mainline.addClasses("Ella", "Vader", 10101);
+//        Mainline.addClasses("Ella", "Vader", 10102);
+//        Mainline.addClasses("Ella", "Vader", 20403);
+//        Mainline.addClasses("Ella", "Vader", 20404);
+        Mainline.displayStudent("Ella", "Vader");
+
+//        Mainline.insertStudent("Stanley", "Kupp", 1350, 3.3);
+//        Mainline.updateMajor("Stanley", "Kupp", "Engineering");
+//        Mainline.addClasses("Stanley", "Kupp", 10101);
+//        Mainline.addClasses("Stanley", "Kupp", 10102);
+//        Mainline.addClasses("Stanley", "Kupp", 20403);
+//        Mainline.addClasses("Stanley", "Kupp", 20404);
+        Mainline.displayStudent("Stanley", "Kupp");
+
+//        Mainline.insertStudent("Lou", "Zar", 950, 3.0);
+//        Mainline.updateMajor("Lou", "Zar", "Education");
+//        Mainline.addClasses("Lou", "Zar", 10101);
+//        Mainline.addClasses("Lou", "Zar", 10102);
+//        Mainline.addClasses("Lou", "Zar", 20403);
+//        Mainline.addClasses("Lou", "Zar", 20404);
+        Mainline.displayStudent("Lou", "Zar");
     }
 
 }

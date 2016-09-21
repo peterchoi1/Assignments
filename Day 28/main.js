@@ -22,14 +22,14 @@ $(document).ready(function() {
 		} else {
 			textbox.removeClass("italic");
 		}
-		if(number < 8) {
+		if(number < 9) {
 		textbox.text(number);
 		} else {
 		textbox.addClass("red");
 		textbox.text(number);
 		}
 		
-		if(number > 8) {
+		if(number => 9) {
 		textbox.text(number);
 		} else {
 		textbox.removeClass("red");
@@ -47,7 +47,7 @@ $(document).ready(function() {
 		} else {
 			textbox.removeClass("italic");
 		}
-		if(number < 8) {
+		if(number < 9) {
 		textbox.text(number);
 		} else {
 		textbox.addClass("red");
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		} else {
 			textbox.removeClass("italic");
 		}
-		if(number > 8) {
+		if(number > 9) {
 		textbox.text(number);
 		} else {
 		textbox.removeClass("red");

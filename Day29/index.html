@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="slack.js"></script>
+	<script src="getSlackToken.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	
+
+<title>Let's spam the channels!</title>
+</head>
+<body>
+
+
+		<div id="menu">
+		  <h2>Public Channel List</h2>
+		  <ul>
+			<p id = "editedP"></p>
+		  </ul>
+		</div>
+		
+
+		<div id="content">
+			<h2>Messenger</h2>
+			<p>
+			<textarea id = "textbox" type="text" name="message" placeholder = "Write your message here and hit 'Enter' or click the button below"></textarea>
+			</p>
+			<button id = "post" class="btn btn-success btn-lg">
+				<span class = "glyphicon glyphicon-envelope"></span> Post 
+			</button>
+		</div>
+		
+		<div id="privateChannels">
+		  <h2>Private Channel List</h2>
+		  <ul>
+			<p id = "editedPrivate"></p>
+		  </ul>
+		</div>
+		
+		<div id="emoji">
+			<h2>Emoji</h2>
+			<p id = "emojiP"></p>
+		</div>
+	
+	
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+#menu {
+   text-align: center;
+   background: lightblue;
+   height: 450px;
+   
+}
+
+#emoji {
+	text-align: center;
+	background: LightCyan;
+	height: 450px;
+	width: 50%;
+}
+
+#privateChannels {
+	text-align: center;
+	background: lightsalmon;
+	height: 450px;
+
+}
+ 
+#content {
+   text-align: center;
+   background: lightgreen;
+   height: 450px;
+   width: 50%;
+   
+}
+
+
+div {
+	width: 49%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: text-top;
+}
+
+
+ul {
+	font-family: "Times New Roman", Georgia, Serif;
+	text-align: left;
+	padding-left: 15%
+}
+
+h2 {
+	font-variant: small-caps;
+}
+
+p {
+	font-size: 25px;
+}
+
+#textbox {
+	width: 400px;
+	height: 100px;
+}
+

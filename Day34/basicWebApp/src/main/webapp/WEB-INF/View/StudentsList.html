@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consuming REST web service in Javascript</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			$.ajax({
+        		url: "http://localhost:8080/student"
+    		}).then(function(data) {
+    			console.log(data);
+				
+			  for (var i=0; i < data.length; i++) {
+			  // name is data[i].name
+			  var item = $("<td>" + data[i].first_name + "</td>");
+			  var item2 = $("<td>" + data[i].last_name + "</td>");
+			  var item3 = $("<td>" + data[i].sat + "</td>");
+			  var item4 = $("<td>" + data[i].gpa + "</td>");
+			  
+			  var tr = $("<tr></tr>");
+			  
+			  tr.append( item );
+			  tr.append( item2 );
+			  tr.append( item3 );
+			  tr.append( item4 );
+
+			  $("#testTable").append( tr );
+			}
+				
+    		});
+			
+			
+			
+
+		}); <!-- end ready -->
+
+	</script>
+</head>
+<body>
+
+	<div id="testDiv">
+		  <table id="testTable" class="table table-striped">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>SAT</th>
+				<th>GPA</th>
+			</tr>
+		  </table>
+	</div>
+
+</body>
+</html>

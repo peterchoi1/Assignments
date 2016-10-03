@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consuming REST web service in Javascript</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			$.ajax({
+        		url: "http://localhost:8080/delete/" + id
+    		}).then(function(data) {
+    			console.log(data);
+			}
+				
+    		});
+
+		}); <!-- end ready -->
+
+	</script>
+</head>
+<body>
+
+Deleted Student
+<p><a href="home.html">Home</a></p>
+<p><a href="StudentsList.html">Student List</a></p>
+<p><a href="addStudent.html">Add Student</a></p>
+
+
+
+</body>
+</html>

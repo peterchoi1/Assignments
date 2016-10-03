@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consuming REST web service in Javascript</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			$.ajax({
+        		url: "http://localhost:8080/studentList"
+    		}).then(function(data) {
+    			console.log(data);
+				
+			  for (var i=0; i < data.length; i++) {
+			  // name is data[i].name
+			  
+			  var test1 = $("<td> <input type=%quot;text&quot; value=" + data[i].id + " disabled> </td>");
+			  var test2 = $("<td> <input type=%quot;text&quot; value=" + data[i].first_name + " disabled> </td>");
+			  var test3 = $("<td> <input type=%quot;text&quot; value=" + data[i].last_name + " disabled> </td>");
+			  var test4 = $("<td> <input type=%quot;text&quot; value=" + data[i].sat + " disabled> </td>");
+			  var test5 = $("<td> <input type=%quot;text&quot; value=" + data[i].gpa + " disabled> </td>");
+			  var test6 = ("<td> <button class = edit-button> Edit </button> <button class = delete-button> Delete </button></td>");
+			  
+			  
+			  //var item0 = $("<td>" + data[i].id + "</td>");
+			  //var item1 = $("<td>" + data[i].first_name + "</td>");
+			  //var item2 = $("<td>" + data[i].last_name + "</td>");
+			 //var item3 = $("<td>" + data[i].sat + "</td>");
+			  //var item4 = $("<td>" + data[i].gpa + "</td>");
+			  //var item5 = ("<td> <button> Edit </button> <button class = delete-button> Delete </button></td>");
+			  
+			  var tr = $("<tr id = " +  data[i].id + "></tr>");
+			  
+			  tr.append( test1 );
+			  tr.append( test2 );
+			  tr.append( test3 );
+			  tr.append( test4 );
+			  tr.append( test5 );
+			  tr.append( test6);
+			  
+
+			  $("#testTable").append( tr );
+			
+			}
+				
+			$(document).on('click','.delete-button',function(){
+            var sid = $(this).closest('tr').attr('id');
+			console.log(sid);
+            var conf = confirm("Delete student with ID: " + sid + "?");
+            if(conf) {
+              $.ajax({
+                url: "http://localhost:8080/student/delete/" + sid
+              }).then(function() {
+                location.reload();
+              })
+            } <!-- end if -->
+			});
+			
+			
+			
+			$(document).on('click','.edit-button',function(){
+            $.ajax({
+        		url: "http://localhost:8080/studentList"
+    		}).then(function(data) {
+    			console.log(data);
+				
+			  for (var i=0; i < data.length; i++) {
+			  // name is data[i].name
+			  
+			  var test1 = $("<td> <input type=%quot;text&quot; value=" + data[i].id + " > </td>");
+			  var test2 = $("<td> <input type=%quot;text&quot; value=" + data[i].first_name + " > </td>");
+			  var test3 = $("<td> <input type=%quot;text&quot; value=" + data[i].last_name + " > </td>");
+			  var test4 = $("<td> <input type=%quot;text&quot; value=" + data[i].sat + " > </td>");
+			  var test5 = $("<td> <input type=%quot;text&quot; value=" + data[i].gpa + " > </td>");
+			  var test6 = ("<td> <button class = edit-button> Edit </button> <button class = delete-button> Delete </button></td>");
+			  
+			  
+			  //var item0 = $("<td>" + data[i].id + "</td>");
+			  //var item1 = $("<td>" + data[i].first_name + "</td>");
+			  //var item2 = $("<td>" + data[i].last_name + "</td>");
+			 //var item3 = $("<td>" + data[i].sat + "</td>");
+			  //var item4 = $("<td>" + data[i].gpa + "</td>");
+			  //var item5 = ("<td> <button> Edit </button> <button class = delete-button> Delete </button></td>");
+			  
+			  var tr = $("<tr id = " +  data[i].id + "></tr>");
+			  
+			  tr.append( test1 );
+			  tr.append( test2 );
+			  tr.append( test3 );
+			  tr.append( test4 );
+			  tr.append( test5 );
+			  tr.append( test6);
+			  
+
+			  $("#testTable").append( tr );
+			  }
+			  
+			  });
+			  
+			  
+			  
+			  
+			  });
+			  });
+			  });
+				
+				
+				
+	</script>
+</head>
+<body>
+
+Student List
+<p><a href="home.html">Home</a></p>
+<p><a href="StudentsList.html">Student List</a></p>
+<p><a href="addStudent.html">Add Student</a></p>
+
+	<div id="testDiv">
+		  <table id="testTable" class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>SAT</th>
+				<th>GPA</th>
+				<th>Actions</th>
+			</tr>
+		  </table>
+	</div>
+
+</body>
+</html>

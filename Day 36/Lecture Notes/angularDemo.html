@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="AppMod">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Demo Intro to Angular</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
+	<script src="index.js" type="text/javascript"></script>
+
+</head>
+<body ng-controller="AppCtrl as ctrl">
+
+	<h1>Angular controller about is {{ctrl.about}}</h1>
+		<h1>Angular controller test is {{ctrl.test}}</h1>
+		<h3>Angular controller is <span ng-bind="ctrl.about" /></h3>
+
+	<h1>Nothing unusual here...{{name}}</h1>
+	<input type="text" value="ABC" ng-model="name" />
+	<p>The sum of 7 + 92 is {{7+92}}</p>
+	<p>The name is {{name}}</p>
+
+	<button ng-click="ctrl.changeAbout('SSA');ctrl.loopStudents()">Change About</button>
+
+	<table>
+
+		<th>Student Name </th>
+		<th>Student SAT </th>
+		<th>Student GPA </th>
+
+			<tr ng-repeat = "teststudents in ctrl.students">
+				<td>{{teststudents.name}}</td>
+				<td>{{teststudents.sat}}</td>
+				<td>{{teststudents.gpa}}</td>
+			</tr>
+
+	</table>
+
+	<p />
+
+
+	<ul ng-repeat = "student in ctrl.visstudents">
+		<li ng-show = student.vis>Name: {{student.name}}, SAT: {{student.sat}}, GPA: {{student.gpa}}</li>
+	<ul>
+
+
+</body>
+</html>

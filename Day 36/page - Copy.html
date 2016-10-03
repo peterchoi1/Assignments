@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<title>Day 36 Assignment</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
+	<script src="utilities - copy.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet" type="text/css">
+	<style>
+	      body {
+					font-family: 'Caveat Brush', cursive;
+					font-size: 25px;
+	      }
+	</style>
+
+</head>
+<body>
+	<table ng-app="myApp" ng-controller="customersCtrl">
+
+            <thead>
+                <tr data-ng-click="ShowHonda=!ShowHonda">
+                    <th>Honda</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-show="ShowHonda">
+                    <td>CRV</td>
+                    <td>HRV</td>
+                    <td>Accord</td>
+                </tr>
+            </tbody>
+
+            <tr data-ng-click="ShowHonda=!ShowHonda">
+                <th>Toyota</th>
+                </trdata-ng-click>
+                </thead>
+            <tbody>
+                <tr data-ng-show="ShowHonda">
+                    <td>Camry</td>
+                    <td>Corolla</td>
+                </tr>
+            </tbody>
+
+        </table>
+</body>
+</html>

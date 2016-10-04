@@ -28,15 +28,15 @@
 				<th>Major ID</th>
 				<th>Actions</th>
 			</tr>
-			
-			<tr ng-repeat="student in ctrl.students">
 
-				<td ng-show = student.vis>{{student.firstname}}</td>
-				<td ng-show = student.vis>{{student.lastname}}</td>
-				<td ng-show = student.vis>{{student.gpa}}</td>
-				<td ng-show = student.vis>{{student.sat}}</td>
-				<td ng-show = student.vis>{{student.majorid}}</td>
-				<td ng-show = student.vis><button ng-click="student.vis = !student.vis">Hide</button></td>
+			<tr ng-hide="toggle" ng-repeat="student in ctrl.student">
+
+				<td>{{student.first_name}}</td>
+				<td>{{student.lastname}}</td>
+				<td>{{student.gpa}}</td>
+				<td>{{student.sat}}</td>
+				<td>{{student.majorid}}</td>
+				<td><button ng-click="toggleFilter()">Hide</button></td>
 
 			</tr>
 		</table>
@@ -47,7 +47,7 @@
 <div>
 
 	<div style="text-align:center">
-		<button ng-click = "ctrl.refreshStudents()">Refresh Student List</button>
+		<button ng-click = "self.refreshStudents()">Refresh Student List</button>
 	<div>
 
 	<div style="text-align:center">

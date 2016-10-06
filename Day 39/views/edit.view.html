@@ -1,0 +1,25 @@
+<div>
+<h1>Student Edit</h1>
+<p>This is the student edit page for STUDENT ID {{ctrl.id}}</p>
+	<form ng-controller = "EditController as editctrl">
+
+		First name:<br>
+		<input type="text" name="firstname" ng-value="ctrl.student.first_name" ng-model="fn">
+		<br>{{fn}}<br>
+		Last name:<br>
+		<input type="text" name="lastname" ng-value="ctrl.student.last_name" ng-model="ln">
+		<br><br>
+		SAT:<br>
+		<input type="text" name="sat" ng-value="ctrl.student.sat" ng-model="sat">
+		<br><br>
+		GPA:<br>
+		<input type="text" name="gpa" ng-value="ctrl.student.gpa" ng-model="gpa">
+		<br>
+		<br><br>
+		<a ng-href="#/student/update/{{ctrl.student.id}}/{{fn}}/{{ln}}/{{sat}}/{{gpa}}">
+			<input ng-controller ="EditController" class="btn btn-xs btn-default" type="button" value="Submit Changes" ng-click="edit()"></a>
+
+			<!-- <a ng-href="#/student/{{student.id}}">
+				<input ng-controller ="EditController" class="btn btn-xs btn-default" type="button" value="Submit Changes" ng-click="edit()"></a> -->
+	</form>
+</div>
